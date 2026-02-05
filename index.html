@@ -7,7 +7,7 @@
     <meta name="description" content="Сохранение, восстановление и приумножение растительного биоразнообразия">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after {
             margin: 0;
@@ -15,116 +15,226 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background-color: rgb(0, 0, 0);
-            color: rgb(255, 255, 255);
-            font-family: 'Source Sans Pro', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 16px;
             line-height: 1.7;
+            color: #ffffff;
+            background: #000000;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Navigation */
-        nav {
-            position: absolute;
+        /* ── Fixed full-page background image ── */
+        .bg-image {
+            position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            z-index: 10;
-            padding: 24px 32px;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            background-image: url('content/Foggy Forest Background Aesthetic.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
         }
 
-        .nav-brand {
-            font-family: 'Playfair Display', Georgia, serif;
+        .page-wrapper {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── Header ── */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 48px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-logo {
             font-size: 18px;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: rgb(255, 255, 255);
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #ffffff;
             text-decoration: none;
         }
 
-        /* Hero */
+        .header-nav {
+            display: flex;
+            gap: 32px;
+        }
+
+        .header-nav a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .header-nav a:hover {
+            color: #ffffff;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .lang-selector {
+            display: flex;
+            gap: 4px;
+            font-size: 13px;
+        }
+
+        .lang-selector a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: color 0.2s, background 0.2s;
+        }
+
+        .lang-selector a.active,
+        .lang-selector a:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* ── Hero ── */
         .hero {
-            position: relative;
-            min-height: 65vh;
+            min-height: 80vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            background-image:
-                linear-gradient(to bottom, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.35) 100%),
-                url('content/Foggy Forest Background Aesthetic.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            padding: 80px 24px 56px;
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 56px;
-            font-weight: 700;
-            line-height: 1.15;
-            max-width: 800px;
-        }
-
-        .hero p {
-            font-family: 'Source Sans Pro', sans-serif;
-            font-size: 18px;
-            font-weight: 300;
-            color: rgb(200, 200, 200);
-            margin-top: 24px;
-            max-width: 600px;
-            letter-spacing: 1px;
+            padding: 80px 48px;
         }
 
         .hero-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            max-width: 720px;
         }
 
-        /* Sections */
-        .section {
-            padding: 64px 24px;
-            max-width: 840px;
+        .hero h1 {
+            font-size: 52px;
+            font-weight: 700;
+            line-height: 1.15;
+            text-shadow: 0 2px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .hero-sub {
+            font-size: 18px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 20px;
+            text-shadow: 0 1px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        /* ── Content panels ── */
+        .content-area {
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+        }
+
+        .container {
+            max-width: 1120px;
             margin: 0 auto;
+            padding: 0 48px;
+        }
+
+        /* ── Section base ── */
+        .section {
+            padding: 56px 0;
         }
 
         .section + .section {
-            border-top: 2px solid rgb(27, 27, 27);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .section h2 {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 32px;
-            font-weight: 600;
-            margin-bottom: 24px;
-            letter-spacing: 1px;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -0.3px;
         }
 
         .section p {
-            color: rgb(200, 200, 200);
-            font-weight: 300;
-            margin-bottom: 16px;
+            color: rgba(255, 255, 255, 0.75);
+            font-weight: 400;
+            font-size: 15px;
+            margin-bottom: 12px;
         }
 
         .section p:last-child {
             margin-bottom: 0;
         }
 
+        /* ── 2-column grid ── */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: start;
+        }
+
+        .grid-2-narrow {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        /* ── About: intro left, principles right ── */
+        .about-intro p {
+            margin-bottom: 14px;
+        }
+
+        .about-approach {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 28px;
+            margin-top: 8px;
+        }
+
+        .about-approach .label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.45);
+            margin-bottom: 12px;
+        }
+
+        .about-approach p {
+            font-size: 15px;
+        }
+
+        /* ── Lists ── */
         .section ul {
             list-style: none;
             padding: 0;
-            margin: 16px 0;
+            margin: 12px 0;
         }
 
         .section ul li {
-            color: rgb(200, 200, 200);
-            font-weight: 300;
-            padding: 8px 0;
-            padding-left: 20px;
+            color: rgba(255, 255, 255, 0.75);
+            font-weight: 400;
+            font-size: 15px;
+            padding: 6px 0 6px 18px;
             position: relative;
         }
 
@@ -132,71 +242,196 @@
             content: '';
             position: absolute;
             left: 0;
-            top: 17px;
-            width: 6px;
-            height: 6px;
-            background: rgb(150, 150, 150);
+            top: 14px;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.35);
             border-radius: 50%;
         }
 
         .species-name {
             font-style: italic;
-            color: rgb(150, 150, 150);
+            color: rgba(255, 255, 255, 0.45);
+            font-size: 14px;
         }
 
-        /* Contact */
+        /* ── Species cards grid ── */
+        .species-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 16px 0;
+        }
+
+        .species-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 6px;
+            padding: 14px 18px;
+        }
+
+        .species-card .common {
+            font-size: 15px;
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        .species-card .latin {
+            font-size: 13px;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.45);
+            margin-top: 2px;
+        }
+
+        /* ── Goals grid ── */
+        .goals-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 16px 0;
+        }
+
+        .goal-item {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 6px;
+            padding: 16px 20px;
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .goal-item.full-width {
+            grid-column: 1 / -1;
+        }
+
+        /* ── Contact ── */
         .contact-email {
-            color: rgb(255, 255, 255);
+            color: #ffffff;
             text-decoration: none;
-            border-bottom: 1px solid rgb(150, 150, 150);
-            padding-bottom: 2px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 1px;
             transition: border-color 0.2s;
         }
 
         .contact-email:hover {
-            border-bottom-color: rgb(255, 255, 255);
+            border-bottom-color: #ffffff;
         }
 
-        /* Footer */
+        /* ── Footer ── */
         footer {
-            border-top: 2px solid rgb(27, 27, 27);
-            padding: 32px 24px;
-            text-align: center;
-            color: rgb(150, 150, 150);
-            font-size: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero {
-                min-height: 50vh;
-                padding: 64px 20px 48px;
+        .footer-inner {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 40px 48px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 48px;
+        }
+
+        .footer-col h4 {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.45);
+            margin-bottom: 16px;
+        }
+
+        .footer-col p,
+        .footer-col a {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: #ffffff;
+        }
+
+        .footer-bottom {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 20px 48px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        .footer-bottom-logo {
+            font-weight: 700;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 900px) {
+            .grid-2,
+            .grid-2-narrow,
+            .species-grid,
+            .goals-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .goal-item.full-width {
+                grid-column: auto;
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .container {
+                padding: 0 24px;
+            }
+
+            header {
+                padding: 16px 24px;
             }
 
             .hero h1 {
                 font-size: 36px;
             }
 
-            .hero p {
-                font-size: 16px;
+            .hero {
+                padding: 60px 24px;
+                min-height: 60vh;
             }
 
-            .section {
-                padding: 48px 20px;
+            .footer-inner {
+                padding: 32px 24px;
             }
 
-            .section h2 {
-                font-size: 26px;
-            }
-
-            nav {
-                padding: 20px;
+            .footer-bottom {
+                padding: 16px 24px;
+                flex-direction: column;
+                gap: 8px;
             }
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 600px) {
+            .header-nav {
+                display: none;
+            }
+
             .hero h1 {
                 font-size: 28px;
+            }
+
+            .section {
+                padding: 40px 0;
             }
 
             .section h2 {
@@ -207,72 +442,165 @@
 </head>
 <body>
 
-    <nav>
-        <a href="/" class="nav-brand">My Green Planet</a>
-    </nav>
+    <div class="bg-image"></div>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Sustainable future starts with us</h1>
-            <p>Сохранение, восстановление и приумножение растительного биоразнообразия</p>
+    <div class="page-wrapper">
+
+        <!-- Header -->
+        <header>
+            <a href="/" class="header-logo">My Green Planet</a>
+            <nav class="header-nav">
+                <a href="#about">О нас</a>
+                <a href="#nursery">Питомник</a>
+                <a href="#restoration">Виды</a>
+                <a href="#goals">Цели</a>
+                <a href="#contacts">Контакты</a>
+            </nav>
+            <div class="header-right">
+                <div class="lang-selector">
+                    <a href="#" class="active">RU</a>
+                    <a href="#">EN</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero: text over the background image, no overlay panel -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Устойчивое будущее начинается с нас</h1>
+                <p class="hero-sub">Сохранение, восстановление и приумножение растительного биоразнообразия</p>
+            </div>
+        </section>
+
+        <!-- Content sections with semi-transparent overlay -->
+        <div class="content-area">
+
+            <!-- About -->
+            <section class="section" id="about">
+                <div class="container">
+                    <h2>О нас</h2>
+                    <div class="grid-2">
+                        <div class="about-intro">
+                            <p>Мы — команда людей, искренне любящих природу и чувствующих ответственность за её будущее. Наш проект родился из простого, но важного желания — не просто говорить о проблемах окружающей среды, а реально их решать.</p>
+                            <p>Мы верим, что человек и природа могут и должны сосуществовать в гармонии. Именно поэтому мы занимаемся сохранением, восстановлением и приумножением растительного биоразнообразия, уделяя особое внимание редким и исчезающим видам растений.</p>
+                        </div>
+                        <div class="about-approach">
+                            <div class="label">Наш подход</div>
+                            <p>Уважение к экосистемам, научная обоснованность и долгосрочное видение.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Nursery + Restoration: 2-column -->
+            <section class="section" id="nursery">
+                <div class="container">
+                    <div class="grid-2">
+                        <div>
+                            <h2>Питомник</h2>
+                            <p>Мы организовали собственный питомник, где создаём условия для выращивания деревьев из семян и размножения редких и ценных видов растений.</p>
+                            <p>Питомник является основой наших природоохранных инициатив и практическим инструментом для восстановления природных популяций и озеленения территорий.</p>
+                        </div>
+                        <div>
+                            <h2>Наша работа</h2>
+                            <ul>
+                                <li>Размножение и выращивание растений в питомнике</li>
+                                <li>Подготовка к возвращению в естественную среду обитания</li>
+                                <li>Участие в проектах по восстановлению природных ландшафтов</li>
+                                <li>Повышение осведомлённости о ценности редких видов</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Rare Species Restoration -->
+            <section class="section" id="restoration">
+                <div class="container">
+                    <h2>Восстановление популяций редких видов</h2>
+                    <p>Одним из ключевых направлений нашей деятельности является восстановление популяций редких и охраняемых растений, занесённых в региональные и национальные Красные книги.</p>
+                    <div class="species-grid">
+                        <div class="species-card">
+                            <div class="common">Тюльпан Биберштейна</div>
+                            <div class="latin">Tulipa biebersteiniana</div>
+                        </div>
+                        <div class="species-card">
+                            <div class="common">Шпажник тонкий</div>
+                            <div class="latin">Gladiolus tenuis</div>
+                        </div>
+                        <div class="species-card">
+                            <div class="common">Лилия кудреватая</div>
+                            <div class="latin">Lilium martagon</div>
+                        </div>
+                        <div class="species-card">
+                            <div class="common">Рябчик шахматный</div>
+                            <div class="latin">Fritillaria meleagris</div>
+                        </div>
+                    </div>
+                    <p>Все эти растения относятся к редким и уязвимым видам, численность которых в природе сокращается из-за утраты местообитаний и антропогенного воздействия.</p>
+                </div>
+            </section>
+
+            <!-- Goals -->
+            <section class="section" id="goals">
+                <div class="container">
+                    <h2>Наши цели</h2>
+                    <p>Мы видим будущее, в котором природа и человек существуют в равновесии.</p>
+                    <div class="goals-grid">
+                        <div class="goal-item">Озеленение городов и населённых пунктов</div>
+                        <div class="goal-item">Восстановление и сохранение популяций редких растений</div>
+                        <div class="goal-item">Сохранение биоразнообразия</div>
+                        <div class="goal-item">Формирование гармоничных отношений между человеком и природой</div>
+                        <div class="goal-item full-width">Повышение экологической культуры и ответственности</div>
+                    </div>
+                    <p>Мы убеждены, что забота о природе сегодня — это инвестиция в качество жизни будущих поколений.</p>
+                </div>
+            </section>
+
+            <!-- Contacts -->
+            <section class="section" id="contacts">
+                <div class="container">
+                    <h2>Контакты</h2>
+                    <div class="grid-2">
+                        <div>
+                            <p>Проект не занимается привлечением денежных средств или инвестиций. Но мы всегда рады любому сотрудничеству.</p>
+                        </div>
+                        <div>
+                            <p>Электронная почта:<br><a href="mailto:bulatfornature@gmail.com" class="contact-email">bulatfornature@gmail.com</a></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
         </div>
-    </section>
 
-    <section class="section" id="about">
-        <h2>О нас</h2>
-        <p>Мы — команда людей, искренне любящих природу и чувствующих ответственность за её будущее. Наш проект родился из простого, но важного желания — не просто говорить о проблемах окружающей среды, а реально их решать.</p>
-        <p>Мы верим, что человек и природа могут и должны сосуществовать в гармонии. Именно поэтому мы занимаемся сохранением, восстановлением и приумножением растительного биоразнообразия, уделяя особое внимание редким и исчезающим видам растений.</p>
-        <p>Наш подход основан на уважении к экосистемам, научной обоснованности и долгосрочном видении.</p>
-    </section>
+        <!-- Footer -->
+        <footer>
+            <div class="footer-inner">
+                <div class="footer-col">
+                    <h4>Навигация</h4>
+                    <a href="#about">О нас</a>
+                    <a href="#nursery">Питомник</a>
+                    <a href="#restoration">Редкие виды</a>
+                    <a href="#goals">Наши цели</a>
+                    <a href="#contacts">Контакты</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Контакты</h4>
+                    <a href="mailto:bulatfornature@gmail.com">bulatfornature@gmail.com</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Проект</h4>
+                    <p>My Green Planet Project</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span class="footer-bottom-logo">My Green Planet</span>
+                <span>2025 My Green Planet Project</span>
+            </div>
+        </footer>
 
-    <section class="section" id="nursery">
-        <h2>Питомник</h2>
-        <p>Мы организовали собственный питомник, где создаём условия для выращивания деревьев из семян и размножения редких и ценных видов растений.</p>
-        <p>Питомник является основой наших природоохранных инициатив и практическим инструментом для восстановления природных популяций и озеленения территорий.</p>
-    </section>
-
-    <section class="section" id="restoration">
-        <h2>Восстановление популяций редких видов растений</h2>
-        <p>Одним из ключевых направлений нашей деятельности является восстановление популяций редких и охраняемых растений, занесённых в региональные и национальные Красные книги.</p>
-        <p>В настоящее время мы работаем над сохранением и восстановлением следующих видов:</p>
-        <ul>
-            <li>Тюльпан Биберштейна <span class="species-name">(Tulipa biebersteiniana)</span></li>
-            <li>Шпажник тонкий <span class="species-name">(Gladiolus tenuis)</span></li>
-            <li>Лилия кудреватая <span class="species-name">(Lilium martagon)</span></li>
-            <li>Рябчик шахматный <span class="species-name">(Fritillaria meleagris)</span></li>
-        </ul>
-        <p>Все эти растения относятся к редким и уязвимым видам, численность которых в природе сокращается из-за утраты местообитаний и антропогенного воздействия.</p>
-        <p>Наша работа включает:</p>
-        <ul>
-            <li>Размножение и выращивание растений в питомнике</li>
-            <li>Подготовку к возвращению в естественную среду обитания</li>
-            <li>Участие в проектах по восстановлению природных ландшафтов</li>
-            <li>Повышение осведомлённости о ценности редких видов</li>
-        </ul>
-    </section>
-
-    <section class="section" id="goals">
-        <h2>Наши цели</h2>
-        <p>Мы видим будущее, в котором природа и человек существуют в равновесии. Наши ключевые цели:</p>
-        <ul>
-            <li>Озеленение городов и населённых пунктов</li>
-            <li>Восстановление и сохранение популяций редких растений</li>
-            <li>Сохранение биоразнообразия</li>
-            <li>Формирование гармоничных отношений между человеком и природой</li>
-            <li>Повышение экологической культуры и ответственности</li>
-        </ul>
-        <p>Мы убеждены, что забота о природе сегодня — это инвестиция в качество жизни будущих поколений.</p>
-    </section>
-
-    <section class="section" id="contacts">
-        <h2>Контакты</h2>
-        <p>Проект не занимается привлечением денежных средств или инвестиций. Но мы всегда рады любому сотрудничеству.</p>
-        <p>Электронная почта: <a href="mailto:bulatfornature@gmail.com" class="contact-email">bulatfornature@gmail.com</a></p>
-    </section>
-
-    <footer>
-        <p>My Green Planet Project</p>
-    </footer>
+    </div>
 
 </body>
 </html>
