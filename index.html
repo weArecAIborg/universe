@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Green Planet Project</title>
+    <meta name="description" content="Сохранение, восстановление и приумножение растительного биоразнообразия">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation */
+        nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            padding: 24px 32px;
+        }
+
+        .nav-brand {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            min-height: 65vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-image:
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.35) 100%),
+                url('content/Foggy Forest Background Aesthetic.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 80px 24px 56px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.15;
+            max-width: 800px;
+        }
+
+        .hero p {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 18px;
+            font-weight: 300;
+            color: rgb(200, 200, 200);
+            margin-top: 24px;
+            max-width: 600px;
+            letter-spacing: 1px;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Sections */
+        .section {
+            padding: 64px 24px;
+            max-width: 840px;
+            margin: 0 auto;
+        }
+
+        .section + .section {
+            border-top: 2px solid rgb(27, 27, 27);
+        }
+
+        .section h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+        }
+
+        .section p {
+            color: rgb(200, 200, 200);
+            font-weight: 300;
+            margin-bottom: 16px;
+        }
+
+        .section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .section ul {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0;
+        }
+
+        .section ul li {
+            color: rgb(200, 200, 200);
+            font-weight: 300;
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .section ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 17px;
+            width: 6px;
+            height: 6px;
+            background: rgb(150, 150, 150);
+            border-radius: 50%;
+        }
+
+        .species-name {
+            font-style: italic;
+            color: rgb(150, 150, 150);
+        }
+
+        /* Contact */
+        .contact-email {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            border-bottom: 1px solid rgb(150, 150, 150);
+            padding-bottom: 2px;
+            transition: border-color 0.2s;
+        }
+
+        .contact-email:hover {
+            border-bottom-color: rgb(255, 255, 255);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 2px solid rgb(27, 27, 27);
+            padding: 32px 24px;
+            text-align: center;
+            color: rgb(150, 150, 150);
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 50vh;
+                padding: 64px 20px 48px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section {
+                padding: 48px 20px;
+            }
+
+            .section h2 {
+                font-size: 26px;
+            }
+
+            nav {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .section h2 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="/" class="nav-brand">My Green Planet</a>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Sustainable future starts with us</h1>
+            <p>Сохранение, восстановление и приумножение растительного биоразнообразия</p>
+        </div>
+    </section>
+
+    <section class="section" id="about">
+        <h2>О нас</h2>
+        <p>Мы — команда людей, искренне любящих природу и чувствующих ответственность за её будущее. Наш проект родился из простого, но важного желания — не просто говорить о проблемах окружающей среды, а реально их решать.</p>
+        <p>Мы верим, что человек и природа могут и должны сосуществовать в гармонии. Именно поэтому мы занимаемся сохранением, восстановлением и приумножением растительного биоразнообразия, уделяя особое внимание редким и исчезающим видам растений.</p>
+        <p>Наш подход основан на уважении к экосистемам, научной обоснованности и долгосрочном видении.</p>
+    </section>
+
+    <section class="section" id="nursery">
+        <h2>Питомник</h2>
+        <p>Мы организовали собственный питомник, где создаём условия для выращивания деревьев из семян и размножения редких и ценных видов растений.</p>
+        <p>Питомник является основой наших природоохранных инициатив и практическим инструментом для восстановления природных популяций и озеленения территорий.</p>
+    </section>
+
+    <section class="section" id="restoration">
+        <h2>Восстановление популяций редких видов растений</h2>
+        <p>Одним из ключевых направлений нашей деятельности является восстановление популяций редких и охраняемых растений, занесённых в региональные и национальные Красные книги.</p>
+        <p>В настоящее время мы работаем над сохранением и восстановлением следующих видов:</p>
+        <ul>
+            <li>Тюльпан Биберштейна <span class="species-name">(Tulipa biebersteiniana)</span></li>
+            <li>Шпажник тонкий <span class="species-name">(Gladiolus tenuis)</span></li>
+            <li>Лилия кудреватая <span class="species-name">(Lilium martagon)</span></li>
+            <li>Рябчик шахматный <span class="species-name">(Fritillaria meleagris)</span></li>
+        </ul>
+        <p>Все эти растения относятся к редким и уязвимым видам, численность которых в природе сокращается из-за утраты местообитаний и антропогенного воздействия.</p>
+        <p>Наша работа включает:</p>
+        <ul>
+            <li>Размножение и выращивание растений в питомнике</li>
+            <li>Подготовку к возвращению в естественную среду обитания</li>
+            <li>Участие в проектах по восстановлению природных ландшафтов</li>
+            <li>Повышение осведомлённости о ценности редких видов</li>
+        </ul>
+    </section>
+
+    <section class="section" id="goals">
+        <h2>Наши цели</h2>
+        <p>Мы видим будущее, в котором природа и человек существуют в равновесии. Наши ключевые цели:</p>
+        <ul>
+            <li>Озеленение городов и населённых пунктов</li>
+            <li>Восстановление и сохранение популяций редких растений</li>
+            <li>Сохранение биоразнообразия</li>
+            <li>Формирование гармоничных отношений между человеком и природой</li>
+            <li>Повышение экологической культуры и ответственности</li>
+        </ul>
+        <p>Мы убеждены, что забота о природе сегодня — это инвестиция в качество жизни будущих поколений.</p>
+    </section>
+
+    <section class="section" id="contacts">
+        <h2>Контакты</h2>
+        <p>Проект не занимается привлечением денежных средств или инвестиций. Но мы всегда рады любому сотрудничеству.</p>
+        <p>Электронная почта: <a href="mailto:bulatfornature@gmail.com" class="contact-email">bulatfornature@gmail.com</a></p>
+    </section>
+
+    <footer>
+        <p>My Green Planet Project</p>
+    </footer>
+
+</body>
+</html>
